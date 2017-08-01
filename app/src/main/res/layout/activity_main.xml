@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="jf.gigapixel.MainActivity"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+
+
+    <EditText
+        android:id="@+id/setLightBrightSpinBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStatus"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="15dp" />
+
+    <EditText
+        android:id="@+id/exposureLineEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/setLightBrightSpinBox"
+        android:layout_marginTop="26dp"
+        app:layout_constraintTop_toBottomOf="@+id/setLightBrightSpinBox"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/setLightBrightSpinBox"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+    <EditText
+        android:id="@+id/currentBrightnessLineEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/exposureLineEdit"
+        android:layout_marginTop="28dp"
+        app:layout_constraintTop_toBottomOf="@+id/exposureLineEdit"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/exposureLineEdit"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/imageView"
+        android:foregroundGravity="center"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/currentBrightnessLineEdit"
+        android:layout_marginEnd="38dp"
+        app:layout_constraintRight_toRightOf="@+id/currentBrightnessLineEdit"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="39dp" />
+
+    <TextView
+        android:id="@+id/textMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading..."
+        android:layout_marginStart="16dp"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="11dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="15dp" />
+
+    <ImageView
+        android:id="@+id/imageView_Test"
+        android:layout_width="101dp"
+        android:layout_height="109dp"
+        app:srcCompat="@android:color/holo_blue_dark"
+        android:layout_marginStart="16dp"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="71dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="15dp" />
+
+    <Button
+        android:id="@+id/buttonStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:onClick="onButtonModeClick"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="11dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/textMain"
+        android:layout_marginLeft="27dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout_Button"
+        android:layout_width="228dp"
+        android:layout_height="476dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="14dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/setLightBrightSpinBox"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.428"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <Button
+            android:id="@+id/buttonMoveUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onButtonMoveUpClick"
+            android:text="Move Up"
+            tools:layout_editor_absoluteX="248dp"
+            tools:layout_editor_absoluteY="303dp" />
+
+        <Button
+            android:id="@+id/buttonMoveDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onButtonMoveDownClick"
+            android:text="Move Down"
+            tools:layout_editor_absoluteX="248dp"
+            tools:layout_editor_absoluteY="351dp" />
+
+        <Button
+            android:id="@+id/buttonMoveLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onButtonMoveLeftClick"
+            android:text="Move Left"
+            tools:layout_editor_absoluteX="248dp"
+            tools:layout_editor_absoluteY="399dp" />
+
+        <Button
+            android:id="@+id/buttonMoveRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onButtonMoveRightClick"
+            android:text="Move Right"
+            tools:layout_editor_absoluteX="248dp"
+            tools:layout_editor_absoluteY="447dp" />
+
+
+        <Button
+            android:id="@+id/connectTrigLightPushButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onConnectTrigLightPushButtonClick"
+            android:text="连接光源"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="64dp" />
+
+        <Button
+            android:id="@+id/readLightPushButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onReadLightPushButtonClick"
+            android:text="读取光源状态"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="122dp" />
+
+        <Button
+            android:id="@+id/shutterSwitchPushButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onShutterSwitchPushButtonClick"
+            android:text="遮光板状态"
+            tools:layout_editor_absoluteX="248dp"
+            tools:layout_editor_absoluteY="81dp" />
+
+        <Button
+            android:id="@+id/setBrightnessPushButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onSetBrightnessPushButtonClick"
+            android:text="发送光源亮度"
+            tools:layout_editor_absoluteX="248dp"
+            tools:layout_editor_absoluteY="143dp" />
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onStartButtonClick"
+            android:text="启动相机"
+            tools:layout_editor_absoluteX="248dp"
+            tools:layout_editor_absoluteY="198dp" />
+
+        <Button
+            android:id="@+id/stopButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onStopButtonClick"
+            android:text="停止相机"
+            tools:layout_editor_absoluteX="248dp"
+            tools:layout_editor_absoluteY="264dp" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
