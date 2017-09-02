@@ -73,19 +73,25 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run()
                 {
-                    while (true)
+                    try {
+                        while (true) {
+                            try {
+                                while (handlerBusy);
+                                sendUpdateUIHandler.sendMessage(sendUpdateUIHandler.obtainMessage());
+                                String str = sin.readLine();
+                                Message message = handler.obtainMessage();
+                                message.obj = (Object) str;
+                                handlerBusy = true;
+                                handler.sendMessage(message);
+
+                            } catch (Exception e) {
+                                Log.d(getClass().getSimpleName(), "Error: TCP thread");
+                            }
+                        }
+                    }
+                    catch (Exception e)
                     {
-                        try
-                        {
-                            String str = sin.readLine();
-                            Message message = new Message();
-                            message.obj = (Object)str;
-                            handler.sendMessage(message);
-                        }
-                        catch (Exception e)
-                        {
-                            Log.d(getClass().getSimpleName(), "Error: TCP thread");
-                        }
+
                     }
                 }
             }).start();
@@ -95,7 +101,11 @@ public class MainActivity extends AppCompatActivity {
         {
             Toast.makeText(this, "连接失败", Toast.LENGTH_LONG).show();
         }
+
+
     }
+
+    private boolean handlerBusy = false;
 
     @Override
     protected void onStart() {
@@ -212,15 +222,45 @@ public class MainActivity extends AppCompatActivity {
         // 第二屏幕接到消息，打印并向mainActivity返回消息
         public void showImage(final Bitmap bitmap)
         {
-            ImageView imageView = new ImageView(getContext());
-            imageView.setImageBitmap(bitmap);
-            setContentView(imageView);
+            try
+            {
+                ImageView imageView = new ImageView(getContext());
+                imageView.setImageBitmap(bitmap);
+                setContentView(imageView);
+            }
+            catch (Exception e)
+            {
+
+            }
         }
     }
 
     private Socket socket = null;
     private BufferedReader sin = null;
     private BufferedWriter sout = null;
+
+    public Handler sendUpdateUIHandler = new Handler()
+    {
+        public void handleMessage(Message mess)
+        {
+            JSONObject temp = new JSONObject();
+
+            try
+            {
+                temp.put("type", "ReadyToUpdateUI");
+                temp.put("name", "ReadyToUpdateUI");
+                writeJSON(temp);
+            }
+            catch (org.json.JSONException e)
+            {
+                Toast.makeText(mainActivity, "JSON解析错误4", Toast.LENGTH_SHORT).show();
+            }
+            finally
+            {
+                handlerBusy = false;
+            }
+        }
+    };
 
     public Handler handler = new Handler()
     {
@@ -285,7 +325,15 @@ public class MainActivity extends AppCompatActivity {
                             }
                             bitmap = Bitmap.createBitmap(colors, 0, width, width, height, Bitmap.Config.ARGB_8888);
                             imageView_Test.setImageBitmap(bitmap);
-                            ((SimplePresentation)(mainActivity.preso)).showImage(bitmap);
+                            try
+                            {
+                                ((SimplePresentation) (mainActivity.preso)).showImage(bitmap);
+                            }
+                            catch (Exception e)
+                            {
+
+                            }
+
                         }
                     }
 
@@ -294,6 +342,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Toast.makeText(mainActivity, "JSON解析错误1: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+
             }
 
         }
@@ -383,6 +432,7 @@ public class MainActivity extends AppCompatActivity {
             isEditMode = true;
         }
     }
+
 
     private void onButtonClick(String buttonName)
     {
